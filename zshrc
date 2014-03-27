@@ -22,14 +22,14 @@ zstyle ':completion:*' list-colors "${LS_COLORS}"
 zstyle ':completion:*' menu select
 zstyle ':completion:*' use-cache true
 
-zstyle ':vcs_info:*' formats '%F{blue}%s%f:%F{yellow}%b%f '
-zstyle ':vcs_info:*' actionformats '%F{blue}%s%f:%F{yellow}%b%f:%F{cyan}%a%f '
+zstyle ':vcs_info:*' formats '%F{blue}%s%f:%F{yellow}%.16b%f '
+zstyle ':vcs_info:*' actionformats '%F{blue}%s%f:%F{yellow}%.16b%f:%F{magenta}%a%f '
 zstyle ':vcs_info:*' enable git hg
 
 setopt prompt_subst
 autoload -Uz vcs_info
 precmd() { vcs_info }
-PROMPT=$'%F{cyan}%1~ %f${vcs_info_msg_0_}%f' # %F{green}❱
+PROMPT=$'%f${vcs_info_msg_0_}%f%F{cyan}%1~%F{magenta}:%f ' # %F{green}❱
 PROMPT2='%F{yellow}%_ %f%f '                  # %F{green}❭
 
 export HISTSIZE=2000
@@ -98,7 +98,7 @@ alias -g v='vim -w ~/.vim/scriptout'
 alias -g json='python -mjson.tool'
 
 alias zshconfig='vim ~/.zshrc'
-alias zshsource='source ~/.zshrc && echo sourced'
+alias zshsource='source ~/.zshrc'
 alias tmuxconfig='vim ~/.tmux.conf'
 alias vimconfig='vim ~/.vimrc'
 alias vimscriptout='vim ~/.vim/scriptout'
