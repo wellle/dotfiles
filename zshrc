@@ -91,9 +91,9 @@ source $GOROOT/misc/zsh/go
 alias ls='ls -FG'
 alias c-='cd -'
 
-alias -g vim='exec_scmb_expand_args /usr/local/bin/vim -w ~/.vim/scriptout'
-alias -g vi='exec_scmb_expand_args /usr/local/bin/vim -w ~/.vim/scriptout'
-alias -g v='exec_scmb_expand_args /usr/local/bin/vim -w ~/.vim/scriptout'
+alias -g vim='vim -w ~/.vim/scriptout'
+alias -g vi='vim -w ~/.vim/scriptout'
+alias -g v='vim -w ~/.vim/scriptout'
 
 alias -g json='python -mjson.tool'
 
@@ -153,8 +153,6 @@ fi
 function zman() {
     MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' +/'^       $1' -" man zshall
 }
-
-[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
 # https://github.com/rupa/z
 source ~/code/z/z.sh
