@@ -8,47 +8,43 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'tsukkee/unite-tag'
 
 " TODO: get rid of vim-sensible
-NeoBundle 'tpope/vim-sensible'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tpope/vim-sleuth'
-NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'tpope/vim-speeddating.git'
+NeoBundle 'tpope/vim-sensible'        " sane general defaults
+NeoBundle 'tpope/vim-repeat'          " makes some plugins repeatable
+NeoBundle 'tpope/vim-abolish'         " I mostly use :S for smart replace
+NeoBundle 'tpope/vim-fugitive'        " git stuff, mostly :Gblame
+NeoBundle 'tpope/vim-surround'        " add and change braces and quotes
+NeoBundle 'tpope/vim-unimpaired'      " list navigation, option toggling
+NeoBundle 'tpope/vim-commentary'      " motion to comment out ranges
+NeoBundle 'tpope/vim-sleuth'          " automatic indentation settings
+NeoBundle 'tpope/vim-dispatch'        " run commands in background
+NeoBundle 'tpope/vim-speeddating.git' " increment dates and times
 
-NeoBundle 'coderifous/textobj-word-column.vim'
-NeoBundle 'michaeljsmith/vim-indent-object'
+NeoBundle 'coderifous/textobj-word-column.vim' " work on columns
+NeoBundle 'michaeljsmith/vim-indent-object'    " work same indentation
 
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'wellle/vim-visual-star-search'
-" NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'ntpeters/vim-better-whitespace'
-NeoBundle 'nelstrom/vim-qargs'
-NeoBundle 'osyo-manga/vim-over'
-NeoBundle 'AndrewRadev/linediff.vim'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'tommcdo/vim-lion'
-NeoBundle 'tommcdo/vim-exchange'
-NeoBundle 'bruno-/vim-vertical-move'
+NeoBundle 'altercation/vim-colors-solarized' " cororscheme
+NeoBundle 'wellle/vim-visual-star-search'    " search for visual selection
+NeoBundle 'ntpeters/vim-better-whitespace'   " show and fix trailing space
+NeoBundle 'nelstrom/vim-qargs'               " populate args with quickfix files
+NeoBundle 'osyo-manga/vim-over'              " interactive substitution
+NeoBundle 'AndrewRadev/linediff.vim'         " diff blocks of lines
+NeoBundle 'rking/ag.vim'                     " search in local files :Ag
+NeoBundle 'kien/ctrlp.vim'                   " fuzzy find files
+NeoBundle 'tommcdo/vim-lion'                 " align operator glip'
+NeoBundle 'tommcdo/vim-exchange'             " operator to exchange text
+NeoBundle 'bruno-/vim-vertical-move'         " move up and down in same column
 
-NeoBundle 'nsf/gocode', {'rtp': 'vim'}
-NeoBundle 'b4winckler/vim-objc'
-NeoBundle 'vim-scripts/javacomplete'
-NeoBundle 'ivalkeen/vim-simpledb'
-NeoBundle 'itchyny/calendar.vim'
-NeoBundle 'kana/vim-filetype-haskell'
-NeoBundle 'benmills/vim-golang-alternate'
+" language support
+NeoBundle 'b4winckler/vim-objc'           " objective c
+NeoBundle 'vim-scripts/javacomplete'      " java
+NeoBundle 'kana/vim-filetype-haskell'     " haskell
+NeoBundle 'tpope/vim-markdown'            " markdown
+NeoBundle 'nsf/gocode', {'rtp': 'vim'}    " go
+NeoBundle 'benmills/vim-golang-alternate' " switch to go test file :A
+NeoBundle 'ivalkeen/vim-simpledb'         " sql repl
 
-NeoBundle 'wellle/targets.vim'
-NeoBundle 'wellle/tmux-complete.vim'
-
-" NeoBundle 'sjl/vitality.vim'
-" NeoBundle 'AndrewRadev/switch.vim'
+NeoBundle 'wellle/targets.vim'       " advanced text objects
+NeoBundle 'wellle/tmux-complete.vim' " complete words from panes
 
 NeoBundleCheck
 
