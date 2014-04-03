@@ -219,37 +219,7 @@ function zman() {
 # https://github.com/rupa/z
 source ~/code/z/z.sh
 
-# https://github.com/junegunn/fzf
-function fzf() {
-    /usr/bin/ruby --disable-gems /Users/welle/code/fzf/fzf "$@"
-}
-
-# https://github.com/junegunn/fzf/issues/27
-function fq1() {
-  local lines
-  lines=$(fzf --filter="$1" --no-sort)
-  if [ -z "$lines" ]; then
-    return 1
-  elif [ $(wc -l <<< "$lines") -eq 1 ]; then
-    echo "$lines"
-  else
-    echo "$lines" | fzf --query="$1"
-  fi
-}
-
-function ze() {
-    FILE=$(fq1 $1) && vim "$FILE"
-}
-
-function zh() { eval $(fc -l -n 1 | fzf +s -x) }
-# function zh() { # display instead of executing
-#     LBUFFER=$(fc -l -n 1 | fzf +s -x)
-#     zle redisplay
-# }
-
-function zd() {
-    DIR=$(find ${1:-*} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf) && cd "$DIR"
-}
+source ~/dotfiles/fzf.zsh
 
 # http://stackoverflow.com/a/9810485/3451033
 # __git_files () {
