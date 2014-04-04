@@ -30,7 +30,7 @@ setopt prompt_subst
 autoload -Uz vcs_info
 precmd() { vcs_info }
 PROMPT=$'%f${vcs_info_msg_0_}%f%F{cyan}%1~%F{magenta}:%f ' # %F{green}❱
-PROMPT2='%F{yellow}%_ %f%f '                  # %F{green}❭
+PROMPT2='%F{yellow}%_ %f%f '                               # %F{green}❭
 
 export HISTSIZE=2000
 export HISTFILE=$HOME/.zsh/history
@@ -83,7 +83,10 @@ bindkey '^f' edit-command-line
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/Code/go
 
-export PATH=$HOME/.rvm/bin:$PATH
+export GEM_HOME=$HOME/.gem
+export GEM_PATH=$HOME/.gem
+
+export PATH=$GEM_PATH/bin:$PATH
 
 source $GOROOT/misc/zsh/go
 
