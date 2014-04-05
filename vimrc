@@ -23,17 +23,19 @@ NeoBundle 'tpope/vim-tbone'           " interact with tmux panes
 NeoBundle 'coderifous/textobj-word-column.vim' " work on columns
 NeoBundle 'michaeljsmith/vim-indent-object'    " work same indentation
 
-NeoBundle 'altercation/vim-colors-solarized' " cororscheme
-NeoBundle 'wellle/vim-visual-star-search'    " search for visual selection
-NeoBundle 'ntpeters/vim-better-whitespace'   " show and fix trailing space
-NeoBundle 'nelstrom/vim-qargs'               " populate args with quickfix files
-NeoBundle 'osyo-manga/vim-over'              " interactive substitution
-NeoBundle 'AndrewRadev/linediff.vim'         " diff blocks of lines
-NeoBundle 'rking/ag.vim'                     " search in local files :Ag
-NeoBundle 'kien/ctrlp.vim'                   " fuzzy find files
-NeoBundle 'tommcdo/vim-lion'                 " align operator glip'
-NeoBundle 'tommcdo/vim-exchange'             " operator to exchange text
-NeoBundle 'bruno-/vim-vertical-move'         " move up and down in same column
+NeoBundle 'wellle/vim-colors-solarized'    " cororscheme
+NeoBundle 'wellle/vim-visual-star-search'  " search for visual selection
+NeoBundle 'ntpeters/vim-better-whitespace' " show and fix trailing space
+NeoBundle 'nelstrom/vim-qargs'             " populate args with quickfix files
+NeoBundle 'osyo-manga/vim-over'            " interactive substitution
+NeoBundle 'AndrewRadev/linediff.vim'       " diff blocks of lines
+NeoBundle 'rking/ag.vim'                   " search in local files :Ag
+NeoBundle 'kien/ctrlp.vim'                 " fuzzy find files
+NeoBundle 'tommcdo/vim-lion'               " align operator glip'
+NeoBundle 'tommcdo/vim-exchange'           " operator to exchange text
+NeoBundle 'bruno-/vim-vertical-move'       " move up and down in same column
+NeoBundle 'epeli/slimux'                   " interact with tmux panes
+NeoBundle 'airblade/vim-gitgutter'         " show git changes with signs
 
 " language support
 NeoBundle 'b4winckler/vim-objc'           " objective c
@@ -91,18 +93,6 @@ SpeedDatingFormat! %^v
 let g:solarized_termtrans=1
 colorscheme solarized
 set background=dark
-runtime! colors/solarized.vim
-
-highlight folded       cterm=bold ctermbg=none ctermfg=5
-highlight vertsplit    cterm=none ctermbg=none ctermfg=9
-highlight statusline   cterm=none ctermbg=none ctermfg=9
-highlight statuslinenc cterm=none ctermbg=none ctermfg=9
-highlight specialkey   cterm=none ctermbg=none ctermfg=1
-highlight matchparen   cterm=none ctermbg=none ctermfg=5
-highlight wildmenu     cterm=bold ctermbg=none ctermfg=3
-highlight visual       cterm=bold ctermbg=7    ctermfg=none
-highlight user1        cterm=none ctermbg=none ctermfg=3
-highlight CursorLine   cterm=bold ctermbg=0    ctermfg=none
 
 set statusline=
 set statusline+=%1*%f%*
@@ -110,6 +100,7 @@ set statusline+=%(\ [%{fugitive#head()}%Y%R%W%M]%)
 set statusline+=%=
 set statusline+=[%(%l,%c%V%)]
 set statusline+=\ %1*%P%*
+highlight user1 cterm=none ctermbg=none ctermfg=3
 
 if has("autocmd")
     augroup autocommands
