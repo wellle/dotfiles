@@ -18,6 +18,7 @@ NeoBundle 'tpope/vim-commentary'      " motion to comment out ranges
 NeoBundle 'tpope/vim-sleuth'          " automatic indentation settings
 NeoBundle 'tpope/vim-dispatch'        " run commands in background
 NeoBundle 'tpope/vim-speeddating.git' " increment dates and times
+NeoBundle 'tpope/vim-tbone'           " interact with tmux panes
 
 NeoBundle 'coderifous/textobj-word-column.vim' " work on columns
 NeoBundle 'michaeljsmith/vim-indent-object'    " work same indentation
