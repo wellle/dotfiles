@@ -18,13 +18,13 @@ NeoBundle 'tpope/vim-commentary'      " motion to comment out ranges
 NeoBundle 'tpope/vim-sleuth'          " automatic indentation settings
 NeoBundle 'tpope/vim-dispatch'        " run commands in background
 NeoBundle 'tpope/vim-speeddating.git' " increment dates and times
-NeoBundle 'tpope/vim-tbone'           " interact with tmux panes
+NeoBundle 'wellle/vim-tbone'          " interact with tmux panes (extract tbone#send_keys)
 
 NeoBundle 'coderifous/textobj-word-column.vim' " work on columns
 NeoBundle 'michaeljsmith/vim-indent-object'    " work same indentation
 
-NeoBundle 'wellle/vim-colors-solarized'    " cororscheme
-NeoBundle 'wellle/vim-visual-star-search'  " search for visual selection
+NeoBundle 'wellle/vim-colors-solarized'    " cororscheme (signColumn + minor tweaks)
+NeoBundle 'wellle/vim-visual-star-search'  " search for visual selection (restore register)
 NeoBundle 'ntpeters/vim-better-whitespace' " show and fix trailing space
 NeoBundle 'nelstrom/vim-qargs'             " populate args with quickfix files
 NeoBundle 'osyo-manga/vim-over'            " interactive substitution
@@ -35,7 +35,7 @@ NeoBundle 'tommcdo/vim-lion'               " align operator glip'
 NeoBundle 'tommcdo/vim-exchange'           " operator to exchange text
 NeoBundle 'bruno-/vim-vertical-move'       " move up and down in same column
 NeoBundle 'epeli/slimux'                   " interact with tmux panes
-NeoBundle 'airblade/vim-gitgutter'         " show git changes with signs
+NeoBundle 'wellle/vim-gitgutter'           " show git changes with signs (fix colors)
 
 " language support
 NeoBundle 'b4winckler/vim-objc'           " objective c
@@ -44,7 +44,7 @@ NeoBundle 'kana/vim-filetype-haskell'     " haskell
 NeoBundle 'tpope/vim-markdown'            " markdown
 NeoBundle 'nsf/gocode', {'rtp': 'vim'}    " go
 NeoBundle 'benmills/vim-golang-alternate' " switch to go test file :A
-NeoBundle 'ivalkeen/vim-simpledb'         " sql repl
+NeoBundle 'wellle/vim-simpledb'           " sql repl (switch mappings)
 
 NeoBundle 'wellle/targets.vim'       " advanced text objects
 NeoBundle 'wellle/tmux-complete.vim' " complete words from panes
