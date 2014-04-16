@@ -18,7 +18,7 @@ NeoBundle 'tpope/vim-commentary'      " motion to comment out ranges
 NeoBundle 'tpope/vim-sleuth'          " automatic indentation settings
 NeoBundle 'tpope/vim-dispatch'        " run commands in background
 NeoBundle 'tpope/vim-speeddating.git' " increment dates and times
-NeoBundle 'wellle/vim-tbone'          " interact with tmux panes (extract tbone#send_keys)
+NeoBundle 'tpope/vim-tbone'           " interact with tmux panes
 
 NeoBundle 'coderifous/textobj-word-column.vim' " work on columns
 NeoBundle 'michaeljsmith/vim-indent-object'    " work same indentation
@@ -33,9 +33,11 @@ NeoBundle 'rking/ag.vim'                   " search in local files :Ag
 NeoBundle 'kien/ctrlp.vim'                 " fuzzy find files
 NeoBundle 'tommcdo/vim-lion'               " align operator glip'
 NeoBundle 'tommcdo/vim-exchange'           " operator to exchange text
+NeoBundle 'tommcdo/vim-ninja-feet'         " operate to ends of text objects
 NeoBundle 'bruno-/vim-vertical-move'       " move up and down in same column
 NeoBundle 'epeli/slimux'                   " interact with tmux panes
-NeoBundle 'wellle/vim-gitgutter'           " show git changes with signs (fix colors)
+NeoBundle 'airblade/vim-gitgutter'         " show git changes with signs
+NeoBundle 'kshenoy/vim-signature'          " show and navigate marks
 
 " language support
 NeoBundle 'b4winckler/vim-objc'           " objective c
