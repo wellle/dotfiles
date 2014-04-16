@@ -100,10 +100,10 @@ alias -g v='vim -w ~/.vim/scriptout'
 
 alias -g json='python -mjson.tool'
 
-alias zshconfig='vim ~/.zshrc'
-alias zshsource='source ~/.zshrc'
-alias tmuxconfig='vim ~/.tmux.conf'
-alias vimconfig='vim ~/.vimrc'
+alias zshconfig='vim ~/dotfiles/zshrc'
+alias zshsource='source ~/dotfiles/zshrc'
+alias tmuxconfig='vim ~/dotfiles/tmux.conf'
+alias vimconfig='vim ~/dotfiles/vimrc'
 alias vimscriptout='vim ~/.vim/scriptout'
 alias vimini='~/Code/vim-clean/src/vim -u ~/.vim_mini/vimrc'
 alias viminiconfig='vim ~/.vim_mini/vimrc'
@@ -165,6 +165,8 @@ function zman() {
 source ~/code/z/z.sh
 
 source ~/dotfiles/fzf.zsh
+
+echo $(date) >> ~/.zsh/dates
 
 # http://stackoverflow.com/a/9810485/3451033
 # __git_files () {
