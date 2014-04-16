@@ -54,6 +54,7 @@ NeoBundle 'wellle/tmux-complete.vim' " complete words from panes
 NeoBundleCheck
 
 set hidden
+set ignorecase " affects command line completion too
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮
 set fillchars=stl:―,stlnc:—,vert:│,fold:۰,diff:·
@@ -122,6 +123,9 @@ let g:netrw_liststyle=3
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 nnoremap <silent> <Leader>p :<C-u>Unite -toggle -auto-resize -buffer-name=files -start-insert file_rec/async<cr><c-u>
+
+" go test in right pane
+nnoremap <silent> <leader>gt :w<CR>:call tbone#send_keys('right', "<C-V><C-C><C-V><C-L>got<C-V><CR>")<CR>
 
 " experimental
 
