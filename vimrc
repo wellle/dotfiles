@@ -132,6 +132,13 @@ nnoremap <silent> <leader>gt :w<CR>:call tbone#send_keys('right', "<C-V><C-C><C-
 onoremap ae :<C-U>normal! ggVG<CR>
 xnoremap ae :<C-U>normal! ggVG<CR>
 
+let g:SignatureMap = {
+            \ 'GotoNextLineAlpha' : "",
+            \ 'GotoPrevLineAlpha' : "",
+            \ 'GotoNextSpotAlpha' : "",
+            \ 'GotoPrevSpotAlpha' : "",
+            \ }
+
 " filter only visually selected text, not linewise
 " http://stackoverflow.com/questions/9637921/vim-filter-only-visual-selection-not-the-entire-line
 " TODO: extract plugin vim-visual-filter?
