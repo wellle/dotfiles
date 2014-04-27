@@ -3,9 +3,6 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/vimproc', {'build': {'mac': 'make -f make_mac.mak'}}
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'tsukkee/unite-tag'
 
 " TODO: get rid of vim-sensible
 NeoBundle 'tpope/vim-sensible'        " sane general defaults
@@ -119,11 +116,6 @@ vmap . :normal .<CR>
 let g:netrw_liststyle=3
 
 " set t_ti= t_te= " don't clear scrollback buffer
-
-" Unite
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-nnoremap <silent> <Leader>p :<C-u>Unite -toggle -auto-resize -buffer-name=files -start-insert file_rec/async<cr><c-u>
 
 " go test in right pane
 nnoremap <silent> <leader>gt :w<CR>:call tbone#send_keys('right', "<C-V><C-C><C-V><C-L>got<C-V><CR>")<CR>
