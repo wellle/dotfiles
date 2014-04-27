@@ -86,7 +86,8 @@ set gdefault
 set wildmode=longest,full
 set scrolloff&
 set matchpairs+=<:>
-map Y y$
+nnoremap Y y$
+nnoremap gV `[v`]
 
 " disable roman numerals
 runtime! plugin/speeddating.vim
@@ -142,6 +143,7 @@ let g:SignatureMap = {
 " filter only visually selected text, not linewise
 " http://stackoverflow.com/questions/9637921/vim-filter-only-visual-selection-not-the-entire-line
 " TODO: extract plugin vim-visual-filter?
+" TODO: doesn't seem to be working for visual block mode. remove?
 nnoremap <silent> <Leader>! :set opfunc=ProgramFilter<cr>g@
 vnoremap <silent> <Leader>! :<c-u>call ProgramFilter(visualmode(), 1)<cr>
 function! ProgramFilter(vt, ...)
@@ -177,46 +179,6 @@ endfunction
 "     call feedkeys("`[i", 'n')
 " endfunction
 
-" next and last text objects
-" https://gist.github.com/sjl/3762227
-" TODO: extract plugin?
-" onoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
-" xnoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
-" onoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
-" xnoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
-
-" onoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
-" xnoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
-" onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
-" xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
-
-" function! s:NextTextObject(motion, dir)
-"   let c = nr2char(getchar())
-
-"   if c ==# "b"
-"       let c = "("
-"   elseif c ==# "B"
-"       let c = "{"
-"   elseif c ==# "r"
-"       let c = "["
-"   endif
-
-"   exe "normal! ".a:dir.c."v".a:motion.c
-" endfunction
-
-" my own attempt to make it repeatable:
-" source ~/.vim/welle/textobj2.vim
-" source ~/.vim/welle/yank.vim
-
-" in between pair of characters text objects
-" http://www.reddit.com/r/vim/comments/1btmhz/textobjectify_vim_plugin_to_improve_textobjects/c9a3q82
-" for char in [ "_", ".", ":", ",", ";", "<bar>", "/", "<bslash>", "*" ]
-"   execute "xnoremap i" . char . " :<C-U>silent!normal!T" . char . "vt" . char . "<CR>"
-"   execute "onoremap i" . char . " :normal vi" . char . "<CR>"
-"   execute "xnoremap a" . char . " :<C-U>silent!normal!F" . char . "vf" . char . "<CR>"
-"   execute "onoremap a" . char . " :normal va" . char . "<CR>"
-" endfor
-
 " TODO: check what takes long with `vim --startuptime filename` and optimize
 
 " idea: add completion mode for last inserted texts that start with the
@@ -229,15 +191,7 @@ endfunction
 " - da% should delete around (like d% already does)
 " NOTE: it works this way, but the matchit plugin breaks this
 " /usr/local/share/vim/macros/matchit.vim
-" TODO: make ci" and ca" search backwards if needed to make it
-" repeatable even if the cursor ends up at the end of the line
 " TODO: make f,dt. repeatable?
-" TODO: fix bug regarding gn:
-" - create file with some contents, check `:set ws` is on
-" - replace all occurences of a word with `cgn` and repetition
-" - observe that `:set ws` is now off
-" `vim -c 'exe "norm afoo\<Esc>gg*cgnbar\<Esc>"  | :set ws?'` ->   wrapscan
-" `vim -c 'exe "norm afoo\<Esc>gg*cgnbar\<Esc>." | :set ws?'` -> nowrapscan
 " TODO: vi{ inside {} should select zero characters, so that a subsequent c
 " basically starts inserting inside the {}. so is needed to make cin{ work in
 " that case. workaround: use f{a instead, but doesn't handle repetition over
@@ -250,3 +204,4 @@ endfunction
 " idea: motion z% jump to matching fold start/end
 " idea: add insert mode to vim-surround that closes all unmatched parens:
 "   `ysipiif (false) {<esc>` would close the `{` after the block in one stroke
+" idea: ^N^X^L should complete lines that contain the completed word
