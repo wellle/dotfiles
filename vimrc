@@ -60,6 +60,9 @@ set shortmess+=I
 set mouse=a
 set nostartofline
 set lazyredraw
+set nowrap
+set autoread
+set foldopen-=block
 
 if has("persistent_undo")
     set swapfile directory=~/.vimtemp/swap//
@@ -116,6 +119,9 @@ vmap . :normal .<CR>
 let g:netrw_liststyle=3
 
 " set t_ti= t_te= " don't clear scrollback buffer
+
+nnoremap <leader>fs :set foldmethod=syntax<CR>
+nnoremap <leader>fm :set foldmethod=manual<CR>
 
 " go test in right pane
 nnoremap <silent> <leader>gt :w<CR>:call tbone#send_keys('right', "<C-V><C-C><C-V><C-L>got<C-V><CR>")<CR>
