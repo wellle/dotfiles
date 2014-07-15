@@ -63,6 +63,8 @@ set lazyredraw
 set nowrap
 set autoread
 set foldopen-=block
+set breakindent
+set breakindentopt=shift:4
 
 if has("persistent_undo")
     set swapfile directory=~/.vimtemp/swap//
