@@ -80,23 +80,24 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^f' edit-command-line
 
-export GOROOT=/usr/local/go
+export GOROOT=/usr/local/Cellar/go/1.3.1/libexec
 export GOPATH=$HOME/Code/go
 
 export GEM_HOME=$HOME/.gem
 export GEM_PATH=$HOME/.gem
 
-export PATH=$GEM_PATH/bin:$PATH
+export PATH=$GOPATH/bin:$GEM_PATH/bin:$PATH
 
-source $GOROOT/misc/zsh/go
+source /usr/local/go/misc/zsh/go
 
 # aliases
 alias ls='ls -FG'
 alias c-='cd -'
 
 alias -g vim='vim -w ~/.vim/scriptout'
-alias -g vi='vim -w ~/.vim/scriptout'
-alias -g v='vim -w ~/.vim/scriptout'
+alias -g vi='vim'
+alias -g v='vim'
+alias vimscratch='vim -c "set buftype=nowrite"'
 
 alias -g json='python -mjson.tool'
 
