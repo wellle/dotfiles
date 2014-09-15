@@ -20,21 +20,22 @@ NeoBundle 'tpope/vim-tbone'           " interact with tmux panes
 NeoBundle 'coderifous/textobj-word-column.vim' " work on columns
 NeoBundle 'michaeljsmith/vim-indent-object'    " work same indentation
 
-NeoBundle 'wellle/vim-colors-solarized'    " cororscheme (signColumn + minor tweaks)
-NeoBundle 'wellle/vim-visual-star-search'  " search for visual selection (restore register)
-NeoBundle 'ntpeters/vim-better-whitespace' " show and fix trailing space
-NeoBundle 'nelstrom/vim-qargs'             " populate args with quickfix files
-NeoBundle 'osyo-manga/vim-over'            " interactive substitution
-NeoBundle 'AndrewRadev/linediff.vim'       " diff blocks of lines
-NeoBundle 'rking/ag.vim'                   " search in local files :Ag
-NeoBundle 'kien/ctrlp.vim'                 " fuzzy find files
-NeoBundle 'tommcdo/vim-lion'               " align operator glip'
-NeoBundle 'tommcdo/vim-exchange'           " operator to exchange text
-NeoBundle 'tommcdo/vim-ninja-feet'         " operate to ends of text objects
-NeoBundle 'bruno-/vim-vertical-move'       " move up and down in same column
-NeoBundle 'epeli/slimux'                   " interact with tmux panes
-NeoBundle 'airblade/vim-gitgutter'         " show git changes with signs
-NeoBundle 'kshenoy/vim-signature'          " show and navigate marks
+NeoBundle 'wellle/vim-colors-solarized'     " cororscheme (signColumn + minor tweaks)
+NeoBundle 'wellle/vim-visual-star-search'   " search for visual selection (restore register)
+NeoBundle 'ntpeters/vim-better-whitespace'  " show and fix trailing space
+NeoBundle 'nelstrom/vim-qargs'              " populate args with quickfix files
+NeoBundle 'osyo-manga/vim-over'             " interactive substitution
+NeoBundle 'AndrewRadev/linediff.vim'        " diff blocks of lines
+NeoBundle 'rking/ag.vim'                    " search in local files :Ag
+NeoBundle 'kien/ctrlp.vim'                  " fuzzy find files
+NeoBundle 'tommcdo/vim-lion'                " align operator glip'
+NeoBundle 'tommcdo/vim-exchange'            " operator to exchange text
+NeoBundle 'tommcdo/vim-ninja-feet'          " operate to ends of text objects
+NeoBundle 'bruno-/vim-vertical-move'        " move up and down in same column
+NeoBundle 'epeli/slimux'                    " interact with tmux panes
+NeoBundle 'airblade/vim-gitgutter'          " show git changes with signs
+NeoBundle 'kshenoy/vim-signature'           " show and navigate marks
+NeoBundle 'AndrewRadev/writable_search.vim' " search and replace across multiple files
 
 " language support
 NeoBundle 'b4winckler/vim-objc'           " objective c
@@ -43,6 +44,7 @@ NeoBundle 'kana/vim-filetype-haskell'     " haskell
 NeoBundle 'tpope/vim-markdown'            " markdown
 NeoBundle 'nsf/gocode', {'rtp': 'vim'}    " go
 NeoBundle 'benmills/vim-golang-alternate' " switch to go test file :A
+NeoBundle 'exu/pgsql.vim'                 " postgres syntax highlighting
 NeoBundle 'wellle/vim-simpledb'           " sql repl (switch mappings)
 
 NeoBundle 'wellle/targets.vim'       " advanced text objects
@@ -125,8 +127,13 @@ let g:netrw_liststyle=3
 nnoremap <leader>fs :set foldmethod=syntax<CR>
 nnoremap <leader>fm :set foldmethod=manual<CR>
 
+" change current word and prepare to repeat next occurence (like *cgn)
+nnoremap c* :<C-U>let @/='\<'.expand("<cword>").'\>'<CR>:set hlsearch<CR>cgn
+
 " go test in right pane
 nnoremap <silent> <leader>gt :w<CR>:call tbone#send_keys('right', "<C-V><C-C><C-V><C-L>got<C-V><CR>")<CR>
+" rerun previous command in right pane
+nnoremap <silent> <leader>tp :w<CR>:call tbone#send_keys('right', "<C-V><C-C><C-V><C-L><C-V><C-P><C-V><CR>")<CR>
 
 " experimental
 
