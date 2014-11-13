@@ -167,6 +167,10 @@ source ~/code/z/z.sh
 
 source ~/dotfiles/fzf.zsh
 
+# disable software control flow <C-S> and <C-Q>
+stty -ixon
+stty -ixoff
+
 echo $(date) >> ~/.zsh/dates
 
 # http://stackoverflow.com/a/9810485/3451033
