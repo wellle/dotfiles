@@ -62,6 +62,8 @@ set shortmess+=I
 set mouse=a
 set nostartofline
 set lazyredraw
+set splitbelow
+set splitright
 set nowrap
 set autoread
 set foldopen-=block
