@@ -122,7 +122,6 @@ alias gotf='go test -gocheck.f'
 
 function vimag { vim -c "Ag '$*'" }
 
-export VIMRUNTIME=/usr/share/vim/vim73/vim74
 export POSTGRESLOG=/usr/local/var/postgres/server.log
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
