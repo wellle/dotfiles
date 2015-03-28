@@ -20,8 +20,6 @@ NeoBundle 'tpope/vim-tbone'           " interact with tmux panes
 NeoBundle 'coderifous/textobj-word-column.vim' " work on columns
 NeoBundle 'michaeljsmith/vim-indent-object'    " work same indentation
 
-NeoBundle 'wellle/vim-colors-solarized'     " cororscheme (signColumn + minor tweaks)
-NeoBundle 'wellle/vim-visual-star-search'   " search for visual selection (restore register)
 NeoBundle 'ntpeters/vim-better-whitespace'  " show and fix trailing space
 NeoBundle 'nelstrom/vim-qargs'              " populate args with quickfix files
 NeoBundle 'osyo-manga/vim-over'             " interactive substitution
@@ -46,6 +44,14 @@ NeoBundle 'nsf/gocode', {'rtp': 'vim'}    " go
 NeoBundle 'benmills/vim-golang-alternate' " switch to go test file :A
 NeoBundle 'exu/pgsql.vim'                 " postgres syntax highlighting
 NeoBundle 'wellle/vim-simpledb'           " sql repl (switch mappings)
+
+" color schemes
+NeoBundle 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'wellle/vim-colors-solarized'
+NeoBundle 'mtglsk/mushroom'
+NeoBundle 'wellsjo/wells-colorscheme.vim'
+NeoBundle 'ajgrf/sprinkles'
 
 NeoBundle 'wellle/targets.vim'       " advanced text objects
 NeoBundle 'wellle/tmux-complete.vim' " complete words from panes
