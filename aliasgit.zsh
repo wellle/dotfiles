@@ -69,7 +69,7 @@ alias gimf='gim finish'
 alias gimrb='gim rebase'
 alias gimrbm='gimrb master'
 alias gl1='gl -1'
-alias gl='g log --graph --boundary --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
+alias gl='g log --graph --boundary --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %<(100,trunc)%s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 alias gla='gl --branches --remotes --tags' # exclude stashes
 alias glam='gla --ancestry-path master..'
 alias glas='gla --stat'
