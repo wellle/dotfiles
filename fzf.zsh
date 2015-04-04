@@ -1,11 +1,3 @@
-# Setup fzf function
-# ------------------
-unalias fzf 2> /dev/null
-fzf() {
-  /usr/bin/ruby --disable-gems /Users/welle/Code/fzf/fzf "$@"
-}
-export -f fzf > /dev/null
-
 # Key bindings
 # ------------
 # CTRL-T - Paste the selected file path(s) into the command line
