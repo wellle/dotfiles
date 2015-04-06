@@ -8,10 +8,9 @@ compinit
 export CORRECT_IGNORE='_*'
 
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source $HOME/.zsh/opp.zsh/opp.zsh
-source /Users/welle/.zsh/opp.zsh/opp/surround.zsh
-source /Users/welle/.zsh/opp.zsh/opp/textobj-between.zsh
+source $HOME/.zsh/opp.zsh/opp/surround.zsh
+source $HOME/.zsh/opp.zsh/opp/textobj-between.zsh
 
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'   # formatting?
@@ -70,8 +69,8 @@ bindkey -M viins '^h' backward-delete-char
 bindkey -M viins '^k' kill-line
 bindkey -M viins '^n' down-history
 bindkey -M viins '^p' up-history
-bindkey -M viins '^r' history-substring-search-up
-bindkey -M viins '^s' history-substring-search-down
+bindkey -M viins "^r" history-incremental-pattern-search-backward
+bindkey -M viins "^s" history-incremental-pattern-search-forward
 bindkey -M viins '^u' backward-kill-line
 bindkey -M viins '^w' backward-delete-word
 bindkey -M viins '^y' yank
@@ -86,7 +85,7 @@ export GOPATH=$HOME/Code/go
 export GEM_HOME=$HOME/.gem
 export GEM_PATH=$HOME/.gem
 
-export PATH=$GOPATH/bin:$GEM_PATH/bin:$PATH
+export PATH=$GOPATH/bin:$GEM_PATH/bin:/usr/local/sbin:$PATH
 
 source /usr/local/go/misc/zsh/go
 
@@ -98,8 +97,6 @@ alias -g vim='vim -w ~/.vim/scriptout'
 alias -g vi='vim'
 alias -g v='vim'
 alias vimscratch='vim -c "set buftype=nowrite"'
-
-alias -g json='python -mjson.tool'
 
 alias zshconfig='vim ~/dotfiles/zshrc'
 alias zshsource='source ~/dotfiles/zshrc'
@@ -119,6 +116,7 @@ alias gob='go build'
 alias gor='go run *.go'
 alias got='go test'
 alias gotf='go test -gocheck.f'
+alias gotb='go test -gocheck.b'
 
 function vimag { vim -c "Ag '$*'" }
 
@@ -126,34 +124,34 @@ export POSTGRESLOG=/usr/local/var/postgres/server.log
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
-# https://github.com/cdlm/infrastructure/blob/master/dotfiles/zsh/rc/zz.highlighting.zsh
-if [[ $COLORFGBG = *';15' ]]; then
-    # solarized light
-    ZSH_HIGHLIGHT_STYLES[default]='fg=green,bold' #base01
-    ZSH_HIGHLIGHT_STYLES[alias]='fg=black'
-    ZSH_HIGHLIGHT_STYLES[builtin]='fg=yellow'
-    ZSH_HIGHLIGHT_STYLES[function]='fg=black'
-    ZSH_HIGHLIGHT_STYLES[command]='fg=black'
-    ZSH_HIGHLIGHT_STYLES[precommand]='fg=black'
-    ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=cyan,bold' #base1
-    ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
-    ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=yellow,bold' #base00
-    ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=yellow,bold' #base00
-    ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=red,bold' #orange
-else
-    # solarized dark
-    ZSH_HIGHLIGHT_STYLES[default]='fg=cyan,bold' #base1
-    ZSH_HIGHLIGHT_STYLES[alias]='fg=white'
-    ZSH_HIGHLIGHT_STYLES[builtin]='fg=yellow'
-    ZSH_HIGHLIGHT_STYLES[function]='fg=white'
-    ZSH_HIGHLIGHT_STYLES[command]='fg=white'
-    ZSH_HIGHLIGHT_STYLES[precommand]='fg=white'
-    ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=green,bold' #base01
-    ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
-    ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=blue,bold' #base0
-    ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=blue,bold' #base0
-    ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=red,bold' #orange
-fi
+# # https://github.com/cdlm/infrastructure/blob/master/dotfiles/zsh/rc/zz.highlighting.zsh
+# if [[ $COLORFGBG = *';15' ]]; then
+#     # solarized light
+#     ZSH_HIGHLIGHT_STYLES[default]='fg=green,bold' #base01
+#     ZSH_HIGHLIGHT_STYLES[alias]='fg=black'
+#     ZSH_HIGHLIGHT_STYLES[builtin]='fg=yellow'
+#     ZSH_HIGHLIGHT_STYLES[function]='fg=black'
+#     ZSH_HIGHLIGHT_STYLES[command]='fg=black'
+#     ZSH_HIGHLIGHT_STYLES[precommand]='fg=black'
+#     ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=cyan,bold' #base1
+#     ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+#     ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=yellow,bold' #base00
+#     ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=yellow,bold' #base00
+#     ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=red,bold' #orange
+# else
+#     # solarized dark
+#     ZSH_HIGHLIGHT_STYLES[default]='fg=cyan,bold' #base1
+#     ZSH_HIGHLIGHT_STYLES[alias]='fg=white'
+#     ZSH_HIGHLIGHT_STYLES[builtin]='fg=yellow'
+#     ZSH_HIGHLIGHT_STYLES[function]='fg=white'
+#     ZSH_HIGHLIGHT_STYLES[command]='fg=white'
+#     ZSH_HIGHLIGHT_STYLES[precommand]='fg=white'
+#     ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=green,bold' #base01
+#     ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+#     ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=blue,bold' #base0
+#     ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=blue,bold' #base0
+#     ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=red,bold' #orange
+# fi
 
 # http://chneukirchen.org/blog/archive/2012/02/10-new-zsh-tricks-you-may-not-know.html
 # improved version that uses vim instead of less
@@ -164,7 +162,7 @@ function zman() {
 # https://github.com/rupa/z
 source ~/code/z/z.sh
 
-source ~/dotfiles/fzf.zsh
+# source ~/dotfiles/fzf.zsh
 
 # disable software control flow <C-S> and <C-Q>
 stty -ixon
@@ -183,3 +181,4 @@ echo $(date) >> ~/.zsh/dates
 # http://chneukirchen.org/blog/archive/2012/02/10-new-zsh-tricks-you-may-not-know.html
 # bindkey "^R" history-incremental-pattern-search-backward
 # bindkey "^S" history-incremental-pattern-search-forward
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

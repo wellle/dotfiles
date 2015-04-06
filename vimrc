@@ -1,5 +1,5 @@
 set runtimepath+=~/.vim/bundle/neobundle.vim/
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/vimproc', {'build': {'mac': 'make -f make_mac.mak'}}
@@ -16,14 +16,17 @@ NeoBundle 'tpope/vim-sleuth'          " automatic indentation settings
 NeoBundle 'tpope/vim-dispatch'        " run commands in background
 NeoBundle 'tpope/vim-speeddating.git' " increment dates and times
 NeoBundle 'tpope/vim-tbone'           " interact with tmux panes
+NeoBundle 'idanarye/vim-merginal'     " work with git branches
 
 NeoBundle 'coderifous/textobj-word-column.vim' " work on columns
 NeoBundle 'michaeljsmith/vim-indent-object'    " work same indentation
+NeoBundle 'jeetsukumaran/vim-indentwise'       " move by indentation
 
 NeoBundle 'ntpeters/vim-better-whitespace'  " show and fix trailing space
 NeoBundle 'nelstrom/vim-qargs'              " populate args with quickfix files
 NeoBundle 'osyo-manga/vim-over'             " interactive substitution
 NeoBundle 'AndrewRadev/linediff.vim'        " diff blocks of lines
+" NeoBundle 'vim-scripts/diffchar.vim'        " show diffs character by character (messes with unimpaired maps)
 NeoBundle 'rking/ag.vim'                    " search in local files :Ag
 NeoBundle 'kien/ctrlp.vim'                  " fuzzy find files
 NeoBundle 'tommcdo/vim-lion'                " align operator glip'
@@ -34,35 +37,67 @@ NeoBundle 'epeli/slimux'                    " interact with tmux panes
 NeoBundle 'airblade/vim-gitgutter'          " show git changes with signs
 NeoBundle 'kshenoy/vim-signature'           " show and navigate marks
 NeoBundle 'AndrewRadev/writable_search.vim' " search and replace across multiple files
+NeoBundle 'idbrii/vim-mark'                 " highlight different words
+NeoBundle 'wellle/vim-visual-star-search'   " search for visual selection (restore register)
+NeoBundle 'haya14busa/incsearch.vim'        " highlight all incsearch matches
 
 " language support
 NeoBundle 'b4winckler/vim-objc'           " objective c
 NeoBundle 'vim-scripts/javacomplete'      " java
 NeoBundle 'kana/vim-filetype-haskell'     " haskell
 NeoBundle 'tpope/vim-markdown'            " markdown
-NeoBundle 'nsf/gocode', {'rtp': 'vim'}    " go
-NeoBundle 'benmills/vim-golang-alternate' " switch to go test file :A
+NeoBundle 'fatih/vim-go'                  " go
 NeoBundle 'exu/pgsql.vim'                 " postgres syntax highlighting
 NeoBundle 'wellle/vim-simpledb'           " sql repl (switch mappings)
 
 " color schemes
 NeoBundle 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'vim-scripts/Colour-Sampler-Pack'
+NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'wellle/vim-colors-solarized'
 NeoBundle 'mtglsk/mushroom'
 NeoBundle 'wellsjo/wells-colorscheme.vim'
 NeoBundle 'ajgrf/sprinkles'
+NeoBundle 'vim-scripts/random.vim' " pseudo colorscheme to pick random one
 
 NeoBundle 'wellle/targets.vim'       " advanced text objects
 NeoBundle 'wellle/tmux-complete.vim' " complete words from panes
+NeoBundle 'wellle/grapple.vim'       " yank without moving
+
+if has('nvim')
+    NeoBundle 'Valloric/YouCompleteMe', {'build':{'mac':'./install.sh'}}
+    let g:tmuxcomplete#trigger = 'omnifunc'
+endif
+
+call neobundle#end()
 
 NeoBundleCheck
+
+colorscheme hybrid
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" TODO: disable [e [b ]b ]e mappingns for diffchar
+" http://stackoverflow.com/questions/16059716/vim-remove-mapping-created-by-vim-plugin#comment22920168_16059873
+" nmap <Plug>JumpDiffCharPrevStart <Plug>JumpDiffCharPrevStart
+" nmap <Plug>JumpDiffCharNextStart <Plug>JumpDiffCharNextStart
+" nmap <Plug>JumpDiffCharPrevEnd <Plug>JumpDiffCharPrevEnd
+" nmap <Plug>JumpDiffCharNextEnd <Plug>JumpDiffCharNextEnd
+
+
+let g:ag_highlight = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_trailing_whitespace_error = 0
 
 set hidden
 set ignorecase " affects command line completion too
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮
-set fillchars=stl:―,stlnc:—,vert:│,fold:۰,diff:·
+set fillchars=fold:۰,diff:·
 set showbreak=↪\ "
 set shortmess+=I
 set mouse=a
@@ -73,8 +108,15 @@ set splitright
 set nowrap
 set autoread
 set foldopen-=block
-set breakindent
-set breakindentopt=shift:4
+
+" fix some error highlighting in shell scripts
+" https://groups.google.com/forum/?fromgroups#!topic/vim_dev/9f-sqmbpyyQ
+let g:is_posix = 1
+
+if exists("+breakindent")
+    set breakindent
+    set breakindentopt=shift:4
+endif
 
 if has("persistent_undo")
     set swapfile directory=~/.vimtemp/swap//
@@ -91,6 +133,7 @@ cnoremap <c-p> <up>
 cnoremap <c-n> <down>
 
 set runtimepath+=$GOROOT/misc/vim
+set runtimepath+=~/.fzf
 
 let loaded_matchit = 1
 runtime! plugin/sensible.vim
@@ -100,23 +143,20 @@ set scrolloff&
 set matchpairs+=<:>
 nnoremap Y y$
 nnoremap gV `[v`]
+nnoremap Q @q
 
 " disable roman numerals
 runtime! plugin/speeddating.vim
 SpeedDatingFormat! %v
 SpeedDatingFormat! %^v
 
-let g:solarized_termtrans=1
-colorscheme solarized
-set background=dark
-
 set statusline=
-set statusline+=%1*%f%*
+set statusline+=%f
 set statusline+=%(\ [%{fugitive#head()}%Y%R%W%M]%)
 set statusline+=%=
 set statusline+=[%(%l,%c%V%)]
-set statusline+=\ %1*%P%*
-highlight user1 cterm=none ctermbg=none ctermfg=3
+set statusline+=\ %P
+" highlight user1 cterm=bold ctermbg=0 ctermfg=11
 
 if has("autocmd")
     augroup autocommands
@@ -138,6 +178,7 @@ nnoremap <leader>fm :set foldmethod=manual<CR>
 " change current word and prepare to repeat next occurence (like *cgn)
 nnoremap c* :<C-U>let @/='\<'.expand("<cword>").'\>'<CR>:set hlsearch<CR>cgn
 
+nnoremap <silent> <leader>gi :GoImports<CR>
 " go test in right pane
 nnoremap <silent> <leader>gt :w<CR>:call tbone#send_keys('right', "<C-V><C-C><C-V><C-L>got<C-V><CR>")<CR>
 " rerun previous command in right pane
@@ -220,3 +261,9 @@ endfunction
 " idea: add insert mode to vim-surround that closes all unmatched parens:
 "   `ysipiif (false) {<esc>` would close the `{` after the block in one stroke
 " idea: ^N^X^L should complete lines that contain the completed word
+
+" TODO: fix on this text, visually select lines containing =, run `:norm df=A,`, doesn't work
+" aoeu
+" x = b
+" y = c
+" snth
