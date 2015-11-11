@@ -79,7 +79,7 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^f' edit-command-line
 
-export GOROOT=/usr/local/Cellar/go/1.3.1/libexec
+# export GOROOT=/usr/local/Cellar/go/1.4.2/libexec
 export GOPATH=$HOME/Code/go
 
 export GEM_HOME=$HOME/.gem
@@ -87,15 +87,14 @@ export GEM_PATH=$HOME/.gem
 
 export PATH=$GOPATH/bin:$GEM_PATH/bin:/usr/local/sbin:$PATH
 
-source /usr/local/go/misc/zsh/go
+# source /usr/local/go/misc/zsh/go
 
 # aliases
 alias ls='ls -FG'
 alias c-='cd -'
+alias grep='grep --color'
 
-alias -g vim='vim -w ~/.vim/scriptout'
-alias -g vi='vim'
-alias -g v='vim'
+alias vim='vim -w ~/.vim/scriptout'
 alias vimscratch='vim -c "set buftype=nowrite"'
 
 alias zshconfig='vim ~/dotfiles/zshrc'
@@ -107,6 +106,9 @@ alias vimini='~/Code/vim-clean/src/vim -u ~/.vim_mini/vimrc'
 alias viminiconfig='vim ~/.vim_mini/vimrc'
 alias mux='~/.tmux.start'
 alias muxconfig='vim ~/.tmux.start'
+
+# https://github.com/tmux/tmux/issues/108#issuecomment-145654960
+alias bug="sudo kill $(ps aux | grep '[n]otifyd' | awk '{print $2}')"
 
 source ~/dotfiles/aliasgit.zsh
 
@@ -182,3 +184,32 @@ echo $(date) >> ~/.zsh/dates
 # bindkey "^R" history-incremental-pattern-search-backward
 # bindkey "^S" history-incremental-pattern-search-forward
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# TODO: extact fzf functions again
+# fshow - git commit browser (enter for show, ctrl-d for diff, ` toggles sort)
+fshow() {
+  local out shas sha q k
+  while out=$(
+      git log --graph --color=always \
+          --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+      fzf --ansi --multi --no-sort --reverse --query="$q" --tiebreak=index \
+          --print-query --expect=ctrl-d --toggle-sort=\`); do
+    q=$(head -1 <<< "$out")
+    k=$(head -2 <<< "$out" | tail -1)
+    shas=$(sed '1,2d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
+    [ -z "$shas" ] && continue
+    if [ "$k" = 'ctrl-d' ]; then
+      git diff --color=always $shas | less -R
+    else
+      for sha in $shas; do
+        git show --color=always $sha | less -R
+      done
+    fi
+  done
+}
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+source ~/.gem/gems/tmuxinator-0.6.11/completion/tmuxinator.zsh
+
+ulimit -n 512

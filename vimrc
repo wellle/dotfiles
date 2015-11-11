@@ -2,83 +2,115 @@ set runtimepath+=~/.vim/bundle/neobundle.vim/
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Shougo/vimproc', {'build': {'mac': 'make -f make_mac.mak'}}
-
-" TODO: get rid of vim-sensible
-NeoBundle 'tpope/vim-sensible'        " sane general defaults
+" NeoBundle 'Shougo/vimproc', {'build': {'mac': 'make -f make_mac.mak'}}
+" 
+" " TODO: get rid of vim-sensible
+" NeoBundle 'tpope/vim-sensible'        " sane general defaults
 NeoBundle 'tpope/vim-repeat'          " makes some plugins repeatable
 NeoBundle 'tpope/vim-abolish'         " I mostly use :S for smart replace
 NeoBundle 'tpope/vim-fugitive'        " git stuff, mostly :Gblame
 NeoBundle 'tpope/vim-surround'        " add and change braces and quotes
 NeoBundle 'tpope/vim-unimpaired'      " list navigation, option toggling
 NeoBundle 'tpope/vim-commentary'      " motion to comment out ranges
-NeoBundle 'tpope/vim-sleuth'          " automatic indentation settings
-NeoBundle 'tpope/vim-dispatch'        " run commands in background
-NeoBundle 'tpope/vim-speeddating.git' " increment dates and times
+" NeoBundle 'tpope/vim-sleuth'          " automatic indentation settings
+" NeoBundle 'tpope/vim-dispatch'        " run commands in background
+" NeoBundle 'tpope/vim-speeddating.git' " increment dates and times
 NeoBundle 'tpope/vim-tbone'           " interact with tmux panes
-NeoBundle 'idanarye/vim-merginal'     " work with git branches
-
+" NeoBundle 'idanarye/vim-merginal'     " work with git branches
+" 
 NeoBundle 'coderifous/textobj-word-column.vim' " work on columns
 NeoBundle 'michaeljsmith/vim-indent-object'    " work same indentation
 NeoBundle 'jeetsukumaran/vim-indentwise'       " move by indentation
-
-NeoBundle 'ntpeters/vim-better-whitespace'  " show and fix trailing space
-NeoBundle 'nelstrom/vim-qargs'              " populate args with quickfix files
-NeoBundle 'osyo-manga/vim-over'             " interactive substitution
+" 
+" NeoBundle 'ntpeters/vim-better-whitespace'  " show and fix trailing space
+" NeoBundle 'nelstrom/vim-qargs'              " populate args with quickfix files
+" NeoBundle 'osyo-manga/vim-over'             " interactive substitution
 NeoBundle 'AndrewRadev/linediff.vim'        " diff blocks of lines
-" NeoBundle 'vim-scripts/diffchar.vim'        " show diffs character by character (messes with unimpaired maps)
+" " NeoBundle 'vim-scripts/diffchar.vim'        " show diffs character by character (messes with unimpaired maps)
 NeoBundle 'rking/ag.vim'                    " search in local files :Ag
 NeoBundle 'kien/ctrlp.vim'                  " fuzzy find files
 NeoBundle 'tommcdo/vim-lion'                " align operator glip'
 NeoBundle 'tommcdo/vim-exchange'            " operator to exchange text
-NeoBundle 'tommcdo/vim-ninja-feet'          " operate to ends of text objects
+" NeoBundle 'tommcdo/vim-ninja-feet'          " operate to ends of text objects
 NeoBundle 'bruno-/vim-vertical-move'        " move up and down in same column
-NeoBundle 'epeli/slimux'                    " interact with tmux panes
+" NeoBundle 'epeli/slimux'                    " interact with tmux panes
 NeoBundle 'airblade/vim-gitgutter'          " show git changes with signs
-NeoBundle 'kshenoy/vim-signature'           " show and navigate marks
+" NeoBundle 'kshenoy/vim-signature'           " show and navigate marks
 NeoBundle 'AndrewRadev/writable_search.vim' " search and replace across multiple files
 NeoBundle 'idbrii/vim-mark'                 " highlight different words
-NeoBundle 'wellle/vim-visual-star-search'   " search for visual selection (restore register)
-NeoBundle 'haya14busa/incsearch.vim'        " highlight all incsearch matches
-
-" language support
-NeoBundle 'b4winckler/vim-objc'           " objective c
-NeoBundle 'vim-scripts/javacomplete'      " java
-NeoBundle 'kana/vim-filetype-haskell'     " haskell
-NeoBundle 'tpope/vim-markdown'            " markdown
+NeoBundle 'bronson/vim-visual-star-search'  " search for visual selection
+" NeoBundle 'haya14busa/incsearch.vim'        " highlight all incsearch matches
+" NeoBundle 'sjl/splice.vim'
+" 
+" " language support
+" NeoBundle 'b4winckler/vim-objc'           " objective c
+" NeoBundle 'vim-scripts/javacomplete'      " java
+" NeoBundle 'kana/vim-filetype-haskell'     " haskell
+" NeoBundle 'tpope/vim-markdown'            " markdown
 NeoBundle 'fatih/vim-go'                  " go
-NeoBundle 'exu/pgsql.vim'                 " postgres syntax highlighting
-NeoBundle 'wellle/vim-simpledb'           " sql repl (switch mappings)
-
-" color schemes
-NeoBundle 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+" NeoBundle 'exu/pgsql.vim'                 " postgres syntax highlighting
+" NeoBundle 'wellle/vim-simpledb'           " sql repl (switch mappings)
+" 
+" " color schemes
+" NeoBundle 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'vim-scripts/Colour-Sampler-Pack'
-NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'wellle/vim-colors-solarized'
-NeoBundle 'mtglsk/mushroom'
-NeoBundle 'wellsjo/wells-colorscheme.vim'
-NeoBundle 'ajgrf/sprinkles'
-NeoBundle 'vim-scripts/random.vim' " pseudo colorscheme to pick random one
-
+" NeoBundle 'vim-scripts/Colour-Sampler-Pack'
+" NeoBundle 'chriskempson/base16-vim'
+" NeoBundle 'wellle/vim-colors-solarized'
+" NeoBundle 'mtglsk/mushroom'
+" NeoBundle 'wellsjo/wells-colorscheme.vim'
+" NeoBundle 'ajgrf/sprinkles'
+" NeoBundle 'vim-scripts/random.vim' " pseudo colorscheme to pick random one
+" 
+" " NeoBundle 'wellle/delimitMate'
+" 
 NeoBundle 'wellle/targets.vim'       " advanced text objects
 NeoBundle 'wellle/tmux-complete.vim' " complete words from panes
-NeoBundle 'wellle/grapple.vim'       " yank without moving
+" NeoBundle 'wellle/grapple.vim'       " yank without moving
+" 
+" if has('nvim')
+"     NeoBundle 'Valloric/YouCompleteMe', {'build':{'mac':'./install.sh'}}
+"     let g:tmuxcomplete#trigger = 'omnifunc'
+" endif
 
-if has('nvim')
-    NeoBundle 'Valloric/YouCompleteMe', {'build':{'mac':'./install.sh'}}
-    let g:tmuxcomplete#trigger = 'omnifunc'
-endif
-
-call neobundle#end()
+NeoBundle 'Shougo/neocomplete.vim'
 
 NeoBundleCheck
 
-colorscheme hybrid
+call neobundle#end()
 
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+" https://github.com/wellle/tmux-complete.vim/issues/63 
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+" Fixing an autocomplete bug with vim-notes
+let g:neocomplete#force_overwrite_completefunc=1
+
+" default
+" let g:targets_seekRanges = 'lr rr ll lb ar ab lB Ar aB Ab AB rb al rB Al bb aa bB Aa BB AA'
+" never seek
+" let g:targets_seekRanges = 'lr lb ar ab lB Ar aB Ab AB'
+" only seek current line
+" let g:targets_seekRanges = 'lr rr ll'
+
+" let g:targets_separator = [
+"     \ ', . ; : + - = ~ _ * # / | \ & $',
+"     \ ['x', '[^a-zA-Z]'],
+"     \ ]
+
+" let delimitMate_expand_cr = 1
+
+colorscheme hybrid
+" colorscheme tomorrow
+
+" set quoteescape=]^\[\\-
+" set quoteescape=
+
+" map /  <Plug>(incsearch-forward)
+" map ?  <Plug>(incsearch-backward)
+" map g/ <Plug>(incsearch-stay)
 
 " TODO: disable [e [b ]b ]e mappingns for diffchar
 " http://stackoverflow.com/questions/16059716/vim-remove-mapping-created-by-vim-plugin#comment22920168_16059873
@@ -87,9 +119,10 @@ map g/ <Plug>(incsearch-stay)
 " nmap <Plug>JumpDiffCharPrevEnd <Plug>JumpDiffCharPrevEnd
 " nmap <Plug>JumpDiffCharNextEnd <Plug>JumpDiffCharNextEnd
 
+nmap <Leader>hp <Plug>GitGutterPreviewHunk
 
 let g:ag_highlight = 1
-let g:go_highlight_functions = 1
+" let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_trailing_whitespace_error = 0
 
@@ -108,6 +141,37 @@ set splitright
 set nowrap
 set autoread
 set foldopen-=block
+set guifont=Fantasque\ Sans\ Mono:h18
+set guioptions-=r
+
+" from vim-sensible
+if has('autocmd')
+  filetype plugin indent on
+endif
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+endif
+
+set incsearch
+set laststatus=2
+set ruler
+set showcmd
+set wildmenu
+set autoindent
+set backspace=indent,eol,start
+set complete-=i
+set smarttab
+set nrformats-=octal
+set ttimeout
+set ttimeoutlen=100
+set display+=lastline
+set encoding=utf-8
+set formatoptions+=j " Delete comment character when joining commented lines
+set fileformats+=mac
+set history=1000
+set viminfo^=!
+
+inoremap <C-U> <C-G>u<C-U>
 
 " fix some error highlighting in shell scripts
 " https://groups.google.com/forum/?fromgroups#!topic/vim_dev/9f-sqmbpyyQ
@@ -133,7 +197,7 @@ cnoremap <c-p> <up>
 cnoremap <c-n> <down>
 
 set runtimepath+=$GOROOT/misc/vim
-set runtimepath+=~/.fzf
+" set runtimepath+=~/.fzf
 
 let loaded_matchit = 1
 runtime! plugin/sensible.vim
@@ -146,9 +210,9 @@ nnoremap gV `[v`]
 nnoremap Q @q
 
 " disable roman numerals
-runtime! plugin/speeddating.vim
-SpeedDatingFormat! %v
-SpeedDatingFormat! %^v
+" runtime! plugin/speeddating.vim
+" SpeedDatingFormat! %v
+" SpeedDatingFormat! %^v
 
 set statusline=
 set statusline+=%f
