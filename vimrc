@@ -66,6 +66,7 @@ NeoBundle 'flazz/vim-colorschemes'
 " 
 NeoBundle 'wellle/targets.vim'       " advanced text objects
 NeoBundle 'wellle/tmux-complete.vim' " complete words from panes
+NeoBundle 'wellle/visual-split.vim'
 " NeoBundle 'wellle/grapple.vim'       " yank without moving
 " 
 " if has('nvim')
@@ -73,20 +74,9 @@ NeoBundle 'wellle/tmux-complete.vim' " complete words from panes
 "     let g:tmuxcomplete#trigger = 'omnifunc'
 " endif
 
-NeoBundle 'Shougo/neocomplete.vim'
-
 NeoBundleCheck
 
 call neobundle#end()
-
-" https://github.com/wellle/tmux-complete.vim/issues/63 
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-" Fixing an autocomplete bug with vim-notes
-let g:neocomplete#force_overwrite_completefunc=1
 
 " default
 " let g:targets_seekRanges = 'lr rr ll lb ar ab lB Ar aB Ab AB rb al rB Al bb aa bB Aa BB AA'
@@ -99,6 +89,8 @@ let g:neocomplete#force_overwrite_completefunc=1
 "     \ ', . ; : + - = ~ _ * # / | \ & $',
 "     \ ['x', '[^a-zA-Z]'],
 "     \ ]
+
+let g:targets_seekRanges = 'cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB'
 
 " let delimitMate_expand_cr = 1
 

@@ -21,14 +21,14 @@ zstyle ':completion:*' list-colors "${LS_COLORS}"
 zstyle ':completion:*' menu select
 zstyle ':completion:*' use-cache true
 
-zstyle ':vcs_info:*' formats '%F{blue}%s%f:%F{yellow}%.16b%f '
-zstyle ':vcs_info:*' actionformats '%F{blue}%s%f:%F{yellow}%.16b%f:%F{magenta}%a%f '
+zstyle ':vcs_info:*' formats '%F{blue}%s%f:%F{green}%.16b%f '
+zstyle ':vcs_info:*' actionformats '%F{blue}%s%f:%F{green}%.16b%f:%F{magenta}%a%f '
 zstyle ':vcs_info:*' enable git hg
 
 setopt prompt_subst
 autoload -Uz vcs_info
 precmd() { vcs_info }
-PROMPT=$'%f${vcs_info_msg_0_}%f%F{cyan}%1~%F{magenta}:%f ' # %F{green}❱
+PROMPT=$'%f${vcs_info_msg_0_}%f%F{yellow}%1~%F{magenta}:%f ' # %F{green}❱
 PROMPT2='%F{yellow}%_ %f%f '                               # %F{green}❭
 
 export HISTSIZE=2000
@@ -85,7 +85,7 @@ export GOPATH=$HOME/Code/go
 export GEM_HOME=$HOME/.gem
 export GEM_PATH=$HOME/.gem
 
-export PATH=$GOPATH/bin:$GEM_PATH/bin:/usr/local/sbin:$PATH
+export PATH=$HOME/bin:$GOPATH/bin:$GEM_PATH/bin:/usr/local/sbin:$PATH
 
 # source /usr/local/go/misc/zsh/go
 
@@ -93,8 +93,9 @@ export PATH=$GOPATH/bin:$GEM_PATH/bin:/usr/local/sbin:$PATH
 alias ls='ls -FG'
 alias c-='cd -'
 alias grep='grep --color'
+alias agi='ag --ignore "*_test.go"'
 
-alias vim='vim -w ~/.vim/scriptout'
+alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim -w ~/.vim/scriptout'
 alias vimscratch='vim -c "set buftype=nowrite"'
 
 alias zshconfig='vim ~/dotfiles/zshrc'
@@ -121,6 +122,7 @@ alias gotf='go test -gocheck.f'
 alias gotb='go test -gocheck.b'
 
 function vimag { vim -c "Ag '$*'" }
+function vimagi { vim -c "Ag --ignore '*_test.go' '$*'" }
 
 export POSTGRESLOG=/usr/local/var/postgres/server.log
 
@@ -210,6 +212,6 @@ fshow() {
 
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 
-source ~/.gem/gems/tmuxinator-0.6.11/completion/tmuxinator.zsh
+# source ~/.gem/gems/tmuxinator-0.6.11/completion/tmuxinator.zsh
 
 ulimit -n 512
