@@ -7,10 +7,14 @@ compinit
 
 export CORRECT_IGNORE='_*'
 
-source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/.zsh/opp.zsh/opp.zsh
-source $HOME/.zsh/opp.zsh/opp/surround.zsh
-source $HOME/.zsh/opp.zsh/opp/textobj-between.zsh
+if [ -e ~/.zsh/zsh-syntax-highlighting ]; then
+    source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+if [ -e ~/.zsh/opp.zsh ]; then
+    source $HOME/.zsh/opp.zsh/opp.zsh
+    source $HOME/.zsh/opp.zsh/opp/surround.zsh
+    source $HOME/.zsh/opp.zsh/opp/textobj-between.zsh
+fi
 
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'   # formatting?
@@ -85,7 +89,8 @@ export GOPATH=$HOME/Code/go
 export GEM_HOME=$HOME/.gem
 export GEM_PATH=$HOME/.gem
 
-export PATH=$HOME/bin:$GOPATH/bin:$GEM_PATH/bin:/usr/local/sbin:$PATH
+export PATH=$HOME/bin:$GOPATH/bin:$GEM_PATH/bin:/usr/local/sbin:/usr/local/bin:$PATH
+# default zsh PATH: /usr/bin:/bin:/usr/sbin:/sbin
 
 # source /usr/local/go/misc/zsh/go
 
@@ -164,7 +169,9 @@ function zman() {
 }
 
 # https://github.com/rupa/z
-source ~/code/z/z.sh
+if [ -e ~/code/z/z.sh ]; then
+    source ~/code/z/z.sh
+fi
 
 # source ~/dotfiles/fzf.zsh
 

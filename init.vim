@@ -16,7 +16,7 @@ set wildmode=longest,full
 
 set statusline=
 set statusline+=%f
-set statusline+=%(\ [%{fugitive#head()}%Y%R%W%M]%)
+" set statusline+=%(\ [%{fugitive#head()}%Y%R%W%M]%) " TODO: make this optional
 set statusline+=%=
 set statusline+=[%(%l,%c%V%)]
 set statusline+=\ %P
@@ -131,5 +131,5 @@ let g:tmuxcomplete#trigger = ''
 call plug#end()
 
 " needs to be set after plug#end
-colorscheme base16-default
+silent! colorscheme base16-default
 set background=dark
