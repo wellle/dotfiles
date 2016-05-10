@@ -11,8 +11,6 @@ install: backup
 				~/.vimtemp/swap; fi
 	@if [ ! -e  ~/.vimtemp/undo ]; then mkdir -p \
 				~/.vimtemp/undo; fi
-	@if [ ! -e  ~/.z ]; then mkdir -p \
-				~/.z; fi
 	@if [ ! -e  ~/.zsh ]; then mkdir -p \
 				~/.zsh; fi
 	@/bin/ln -sfv   ~/dotfiles/git_template/hooks/ctags \

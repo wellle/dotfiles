@@ -171,8 +171,8 @@ function zman() {
 }
 
 # https://github.com/rupa/z
-if [ -e ~/code/z/z.sh ]; then
-    source ~/code/z/z.sh
+if [ -e /usr/local/etc/profile.d/z.sh ]; then
+    . /usr/local/etc/profile.d/z.sh
 fi
 
 # https://github.com/supercrabtree/k
