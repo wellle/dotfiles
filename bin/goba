@@ -1,0 +1,14 @@
+#!/bin/bash
+
+declare paths=$(for t in $(find . -name "*_test.go" -not -path "./.go/*"); do dirname $t; done | sort | uniq)
+declare -i return_value=0
+
+for path in ${paths[@]}; do
+  if go test -i $path; then
+    echo "$path...ok"
+  else
+    return_value=1
+  fi
+done
+
+exit $return_value

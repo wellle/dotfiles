@@ -1,0 +1,14 @@
+#!/bin/bash
+
+declare paths=$(for t in $(find . -name "*_test.go" -not -path "./.go/*"); do dirname $t; done | sort | uniq)
+declare -i return_value=0
+
+echo -e "\033[0;36mChecking for compile-time errors\033[0m"
+goba || exit 1
+
+echo -e "\033[0;36mRunning tests\033[0m"
+for path in ${paths[@]}; do
+  go test $path || return_value=1
+done
+
+exit $return_value
