@@ -110,11 +110,13 @@ let g:go_highlight_trailing_whitespace_error = 0
 Plug 'bronson/vim-visual-star-search' " must be after vim-mark because of mapping clash? check and fix!
 
 " local plugins
-Plug '~/.vim/bundle/targets.vim'
+" TODO: use local versions again?
+" vimplug doesn't have repository history
+Plug 'wellle/targets.vim'
 let g:targets_addJumplist = 1
 let g:targets_jumpRanges = 'rr rb rB bb bB BB ll al Al aa Aa AA'
-Plug '~/.vim/bundle/tmux-complete.vim' " deoplete completion makes deoplete slow :(
-Plug '~/.vim/bundle/visual-split.vim'
+Plug 'wellle/tmux-complete.vim' " deoplete completion makes deoplete slow :(
+Plug 'wellle/visual-split.vim'
 let g:tmuxcomplete#trigger = ''
 
 " for testing
