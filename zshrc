@@ -89,7 +89,7 @@ export GOPATH=$HOME/Code/go
 export GEM_HOME=$HOME/.gem
 export GEM_PATH=$HOME/.gem
 
-export PATH=$HOME/bin:$GOPATH/bin:$GEM_PATH/bin:/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=$HOME/dotfiles/bin:$GOPATH/bin:$GEM_PATH/bin:/usr/local/sbin:/usr/local/bin:$PATH
 # default zsh PATH: /usr/bin:/bin:/usr/sbin:/sbin
 
 # source /usr/local/go/misc/zsh/go
@@ -110,8 +110,8 @@ alias vimconfig='vim ~/dotfiles/vimrc'
 alias vimscriptout='vim ~/.vim/scriptout'
 alias vimini='~/Code/vim-clean/src/vim -u ~/.vim_mini/vimrc'
 alias viminiconfig='vim ~/.vim_mini/vimrc'
-alias mux='~/.tmux.start'
-alias muxconfig='vim ~/.tmux.start'
+alias mux='~/Dropbox/tmux.start'
+alias muxconfig='vim ~/Dropbox/tmux.start'
 
 # https://github.com/tmux/tmux/issues/108#issuecomment-145654960
 alias bug="sudo kill $(ps aux | grep '[n]otifyd' | awk '{print $2}')"
