@@ -37,6 +37,8 @@ install: backup
 							~/.vimrc
 	@/bin/ln -sfv   ~/dotfiles/zshrc \
 							~/.zshrc
+	@/bin/ln -sfv   ~/dotfiles/ctags \
+							~/.ctags
 
 backup:
 	@if [ ! -e  ~/dotfiles/backups/config/nvim/autoload ]; then mkdir -p \
@@ -59,6 +61,9 @@ backup:
 	@if [ -e            ~/.zshrc ]; then /bin/cp -nv \
 						~/.zshrc \
 		~/dotfiles/backups/zshrc; fi
+	@if [ -e            ~/.ctags ]; then /bin/cp -nv \
+						~/.ctags \
+		~/dotfiles/backups/ctags; fi
 
 deletebackups:
 	rm -rfv ~/dotfiles/backups
@@ -76,4 +81,6 @@ deleteoriginals:
 				~/.vimrc; fi
 	@if [ -e    ~/.zshrc ]; then rm -v \
 				~/.zshrc; fi
+	@if [ -e    ~/.ctags ]; then rm -v \
+				~/.ctags; fi
 
