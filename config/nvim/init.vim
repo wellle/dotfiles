@@ -10,16 +10,10 @@ set lazyredraw
 set nostartofline
 set showcmd
 
+set foldopen-=block
 set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,eol:¶
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 set wildmode=longest,full
-
-set statusline=
-set statusline+=%f
-" set statusline+=%(\ [%{fugitive#head()}%Y%R%W%M]%) " TODO: make this optional
-set statusline+=%=
-set statusline+=[%(%l,%c%V%)]
-set statusline+=\ %P
 
 if has("persistent_undo")
     set swapfile directory=~/.vimtemp/swap//
@@ -32,6 +26,11 @@ nnoremap Y y$
 nnoremap Q @q
 nnoremap gV `[v`]
 nnoremap <Leader>a <c-^>
+
+" don't store paragraph motions in jump list
+" http://superuser.com/a/836924
+nnoremap <silent> } :<C-u>execute "keepjumps norm! " . v:count1 . "}"<CR>
+nnoremap <silent> { :<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>
 
 nnoremap <silent> <leader>gi :GoImports<CR>
 " go test in right pane
@@ -112,11 +111,15 @@ Plug 'bronson/vim-visual-star-search' " must be after vim-mark because of mappin
 " local plugins
 " TODO: use local versions again?
 " vimplug doesn't have repository history
-Plug 'wellle/targets.vim'
-let g:targets_addJumplist = 1
-let g:targets_jumpRanges = 'rr rb rB bb bB BB ll al Al aa Aa AA'
+Plug '~/code/targets.vim'
+" let g:targets_addJumplist = 1
+" let g:targets_jumpRanges = 'rr rb rB bb bB BB ll al Al aa Aa AA'
+" let g:targets_separators = ',c . ; : + - = ~ _ * # / | \ & $'
+" let g:targets_argTrigger = ','
+
+Plug '~/code/visual-split.vim'
+
 Plug 'wellle/tmux-complete.vim' " deoplete completion makes deoplete slow :(
-Plug 'wellle/visual-split.vim'
 let g:tmuxcomplete#trigger = ''
 
 " for testing
@@ -132,6 +135,17 @@ let g:tmuxcomplete#trigger = ''
 " Add plugins to &runtimepath
 call plug#end()
 
+set statusline=
+set statusline+=%f
+" if exists('g:loaded_fugitive') 
+set statusline+=%(\ [%{fugitive#head()}%Y%R%W%M]%) " TODO: use try/catch here?
+" else
+"     set statusline+=%(\ [%Y%R%W%M]%)
+" endif
+set statusline+=%=
+set statusline+=[%(%l,%c%V%)]
+set statusline+=\ %P
+
 " needs to be set after plug#end
-silent! colorscheme base16-default
+silent! colorscheme base16-default-dark
 set background=dark

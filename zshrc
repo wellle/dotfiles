@@ -89,7 +89,7 @@ export GOPATH=$HOME/Code/go
 export GEM_HOME=$HOME/.gem
 export GEM_PATH=$HOME/.gem
 
-export PATH=$HOME/dotfiles/bin:$GOPATH/bin:$GEM_PATH/bin:/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=$HOME/dotfiles/bin:$GOPATH/bin:$GEM_PATH/bin:/usr/local/sbin:/usr/local/bin:/Users/welle/protoc-3/bin:$PATH
 # default zsh PATH: /usr/bin:/bin:/usr/sbin:/sbin
 
 # source /usr/local/go/misc/zsh/go
@@ -112,6 +112,8 @@ alias vimini='~/Code/vim-clean/src/vim -u ~/.vim_mini/vimrc'
 alias viminiconfig='vim ~/.vim_mini/vimrc'
 alias mux='~/Dropbox/tmux.start'
 alias muxconfig='vim ~/Dropbox/tmux.start'
+
+# alias protoc='~/protoc-3/bin/protoc'
 
 # https://github.com/tmux/tmux/issues/108#issuecomment-145654960
 alias bug="sudo kill $(ps aux | grep '[n]otifyd' | awk '{print $2}')"
@@ -171,6 +173,11 @@ function zman() {
 # https://github.com/rupa/z
 if [ -e ~/code/z/z.sh ]; then
     source ~/code/z/z.sh
+fi
+
+# https://github.com/supercrabtree/k
+if [ -e ~/code/k/k.sh ]; then
+    source ~/code/k/k.sh
 fi
 
 # source ~/dotfiles/fzf.zsh

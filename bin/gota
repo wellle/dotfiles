@@ -8,7 +8,9 @@ goba || exit 1
 
 echo -e "\033[0;36mRunning tests\033[0m"
 for path in ${paths[@]}; do
-  go test $path || return_value=1
+    go test $path & # TODO: collect return value?
 done
+
+wait
 
 exit $return_value
