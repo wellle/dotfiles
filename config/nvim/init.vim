@@ -9,6 +9,8 @@ set ignorecase
 set lazyredraw
 set nostartofline
 set showcmd
+set termguicolors
+set inccommand=nosplit
 
 set foldopen-=block
 set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,eol:¶
@@ -88,20 +90,25 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'mbbill/undotree'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'tommcdo/vim-exchange'
-Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-rhubarb'
 Plug 'vim-scripts/ScrollColors'
+Plug 'neomake/neomake'
+Plug 'sjl/splice.vim'
 
 " colorscheems
 Plug 'chriskempson/base16-vim'
 Plug 'sts10/vim-mustard'
+
+Plug 'tommcdo/vim-lion'
+let b:lion_squeeze_spaces = 1
 
 Plug '~/code/nvim-editcommand'
 let g:editcommand_prompt = ':'

@@ -46,6 +46,8 @@ if filereadable("~/.vim/bundle/neobundle.vim")
     " NeoBundle 'haya14busa/incsearch.vim'        " highlight all incsearch matches
     " NeoBundle 'sjl/splice.vim'
 
+    NeoBundle 'neomake/neomake' 
+
     " " language support
     " NeoBundle 'b4winckler/vim-objc'           " objective c
     " NeoBundle 'vim-scripts/javacomplete'      " java

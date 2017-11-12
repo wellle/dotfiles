@@ -45,6 +45,8 @@ setopt extended_history
 setopt autopushd # use `cd -<tab>` to select recent dir
 setopt autocd
 
+setopt extended_glob # for ~ and ^ in patterns
+
 # http://zsh.sourceforge.net/FAQ/zshfaq03.html
 # allow binding of ^s and ^q (was stop/resume output)
 setopt no_flow_control
@@ -112,6 +114,8 @@ alias viminiconfig='vim ~/.vim_mini/vimrc'
 alias mux='~/Dropbox/tmux.start'
 alias muxconfig='vim ~/Dropbox/tmux.start'
 
+alias bing='afplay /System/Library/Sounds/Ping.aiff -v 2'
+
 # alias protoc='~/protoc-3/bin/protoc'
 
 # https://github.com/tmux/tmux/issues/108#issuecomment-145654960
@@ -128,15 +132,18 @@ alias gotr='go test -run'
 alias gotf='go test -gocheck.f'
 alias gotb='go test -gocheck.b'
 
-alias ag='ag --ignore vendor'
+alias ag='ag --ignore "*.log" --ignore vendor'
 alias agi='ag --ignore "*_test.go"'
 alias agc='ag -c'
 alias agic='agi -c'
 
-function vimag { vim -c "Ag --ignore vendor '$*'" }
-function vimagc { vim -c "Ag --ignore vendor '$*'" }
-function vimagi { vim -c "Ag --ignore vendor --ignore '*_test.go' '$*'" }
-function vimagic { vim -c "Ag --ignore vendor --ignore '*_test.go' '$*'" }
+function vimag  { vim -c "Ag --ignore "*.log" --ignore vendor '$*'" }
+function vimagi { vim -c "Ag --ignore "*.log" --ignore vendor --ignore '*_test.go' '$*'" }
+alias vimagc='vimag'
+alias vimagic='vimagi'
+
+# global aliases
+# alias -g not="*~*_test.go~*/*_test.go" # no tests # doesn't work for nested folders...
 
 export POSTGRESLOG=/usr/local/var/postgres/server.log
 
@@ -187,7 +194,7 @@ if [ -e ~/code/k/k.sh ]; then
     source ~/code/k/k.sh
 fi
 
-# source ~/dotfiles/fzf.zsh
+source ~/dotfiles/fzf.zsh
 
 # disable software control flow <C-S> and <C-Q>
 stty -ixon
