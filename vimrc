@@ -1,3 +1,6 @@
+source ~/.config/nvim/init.vim
+finish
+
 if filereadable("~/.vim/bundle/neobundle.vim")
     set runtimepath+=~/.vim/bundle/neobundle.vim/
     call neobundle#begin(expand('~/.vim/bundle/'))

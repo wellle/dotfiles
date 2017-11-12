@@ -15,6 +15,11 @@ set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,eol:¶
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 set wildmode=longest,full
 
+if has('nvim')
+    set termguicolors
+    set inccommand=split
+end
+
 if has("persistent_undo")
     set swapfile directory=~/.vimtemp/swap//
     set backup backupdir=~/.vimtemp/backup//
@@ -46,15 +51,17 @@ cnoremap <c-e> <end>
 cnoremap <c-p> <up>
 cnoremap <c-n> <down>
 
-tnoremap <Esc> <C-\><C-n>
-" tnoremap <A-h> <C-\><C-n><C-w>h
-" tnoremap <A-j> <C-\><C-n><C-w>j
-" tnoremap <A-k> <C-\><C-n><C-w>k
-" tnoremap <A-l> <C-\><C-n><C-w>l
-" nnoremap <A-h> <C-w>h
-" nnoremap <A-j> <C-w>j
-" nnoremap <A-k> <C-w>k
-" nnoremap <A-l> <C-w>l
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+    " tnoremap <A-h> <C-\><C-n><C-w>h
+    " tnoremap <A-j> <C-\><C-n><C-w>j
+    " tnoremap <A-k> <C-\><C-n><C-w>k
+    " tnoremap <A-l> <C-\><C-n><C-w>l
+    " nnoremap <A-h> <C-w>h
+    " nnoremap <A-j> <C-w>j
+    " nnoremap <A-k> <C-w>k
+    " nnoremap <A-l> <C-w>l
+end
 
 onoremap ae :<C-U>normal! ggVG<CR>
 xnoremap ae :<C-U>normal! ggVG<CR>
@@ -65,7 +72,6 @@ if has("autocmd")
         autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
     augroup END
 endif
-
 
 " plugins and plugin settings
 call plug#begin('~/.vim/plugged')
@@ -90,6 +96,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-rhubarb'
 Plug 'vim-scripts/ScrollColors'
 
 " colorscheems
@@ -112,15 +119,19 @@ Plug 'bronson/vim-visual-star-search' " must be after vim-mark because of mappin
 " TODO: use local versions again?
 " vimplug doesn't have repository history
 Plug '~/code/targets.vim'
+let g:targets_quotes = '"q '' `'
+" let g:targets_nlNL = 'nN  '
 " let g:targets_addJumplist = 1
 " let g:targets_jumpRanges = 'rr rb rB bb bB BB ll al Al aa Aa AA'
 " let g:targets_separators = ',c . ; : + - = ~ _ * # / | \ & $'
 " let g:targets_argTrigger = ','
+" let g:targets_seekRanges = 'cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
+" set selection=exclusive
 
 Plug '~/code/visual-split.vim'
 
-Plug 'wellle/tmux-complete.vim' " deoplete completion makes deoplete slow :(
-let g:tmuxcomplete#trigger = ''
+Plug '~/code/tmux-complete.vim' " deoplete completion makes deoplete slow :(
+" let g:tmuxcomplete#trigger = ''
 
 " for testing
 " for https://github.com/wellle/tmux-complete.vim/issues/67
@@ -131,6 +142,9 @@ let g:tmuxcomplete#trigger = ''
 " Plug 'Shougo/neco-syntax'
 " Plug 'Shougo/neocomplcache.vim'
 " let g:neocomplcache_enable_at_startup = 1
+" Plug 'terryma/vim-expand-region'
+" vmap <Space> <Plug>(expand_region_expand)
+" vmap <BS> <Plug>(expand_region_shrink)
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -148,4 +162,9 @@ set statusline+=\ %P
 
 " needs to be set after plug#end
 silent! colorscheme base16-default-dark
-set background=dark
+" silent! colorscheme base16-default-light
+" set background=dark
+"
+highlight! link Visual MarkWord5
+" highlight! link TermCursor MarkWord2
+" highlight! link Cursor MarkWord2

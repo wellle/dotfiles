@@ -5,7 +5,7 @@
     helper = osxkeychain
 [core]
     editor = "NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim"
-	pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R -S
+	pager = diff-highlight | diff-so-fancy | less --tabs=4 -RSFX
 [diff]
     tool = vimdiff
 [difftool]

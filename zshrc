@@ -98,15 +98,14 @@ export PATH=$HOME/dotfiles/bin:$GOPATH/bin:$GEM_PATH/bin:/usr/local/sbin:/usr/lo
 alias ls='ls -FG'
 alias c-='cd -'
 alias grep='grep --color'
-alias agi='ag --ignore "*_test.go"'
 
-alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim -w ~/.vim/scriptout'
+alias vim='nvim -w ~/.vim/scriptout'
 alias vimscratch='vim -c "set buftype=nowrite"'
 
 alias zshconfig='vim ~/dotfiles/zshrc'
 alias zshsource='source ~/dotfiles/zshrc'
 alias tmuxconfig='vim ~/dotfiles/tmux.conf'
-alias vimconfig='vim ~/dotfiles/vimrc'
+alias vimconfig='vim ~/.config/nvim/init.vim'
 alias vimscriptout='vim ~/.vim/scriptout'
 alias vimini='~/Code/vim-clean/src/vim -u ~/.vim_mini/vimrc'
 alias viminiconfig='vim ~/.vim_mini/vimrc'
@@ -125,11 +124,19 @@ alias gof='go fmt ./...'
 alias gob='go build'
 alias gor='go run *.go'
 alias got='go test'
+alias gotr='go test -run'
 alias gotf='go test -gocheck.f'
 alias gotb='go test -gocheck.b'
 
-function vimag { vim -c "Ag '$*'" }
-function vimagi { vim -c "Ag --ignore '*_test.go' '$*'" }
+alias ag='ag --ignore vendor'
+alias agi='ag --ignore "*_test.go"'
+alias agc='ag -c'
+alias agic='agi -c'
+
+function vimag { vim -c "Ag --ignore vendor '$*'" }
+function vimagc { vim -c "Ag --ignore vendor '$*'" }
+function vimagi { vim -c "Ag --ignore vendor --ignore '*_test.go' '$*'" }
+function vimagic { vim -c "Ag --ignore vendor --ignore '*_test.go' '$*'" }
 
 export POSTGRESLOG=/usr/local/var/postgres/server.log
 
