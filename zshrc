@@ -101,7 +101,9 @@ alias ls='ls -FG'
 alias c-='cd -'
 alias grep='grep --color'
 
-alias vim='nvim -w ~/.vim/scriptout'
+alias vim='nvim -w ~/.vim/scriptout' # actually neovim
+alias vim7='/usr/bin/vim -w ~/.vim/scriptout' # system vim (7.3)
+alias vim8='/usr/local/bin/vim -w ~/.vim/scriptout' # vim 8
 alias vimscratch='vim -c "set buftype=nowrite"'
 
 alias zshconfig='vim ~/dotfiles/zshrc'
@@ -109,8 +111,8 @@ alias zshsource='source ~/dotfiles/zshrc'
 alias tmuxconfig='vim ~/dotfiles/tmux.conf'
 alias vimconfig='vim ~/.config/nvim/init.vim'
 alias vimscriptout='vim ~/.vim/scriptout'
-alias vimini='~/Code/vim-clean/src/vim -u ~/.vim_mini/vimrc'
-alias viminiconfig='vim ~/.vim_mini/vimrc'
+alias vimini='vim -u ~/.vimini/vimrc'
+alias viminiconfig='vim ~/.vimini/vimrc'
 alias mux='~/Dropbox/tmux.start'
 alias muxconfig='vim ~/Dropbox/tmux.start'
 
