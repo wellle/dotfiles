@@ -10,7 +10,7 @@ set lazyredraw
 set nostartofline
 set showcmd
 set termguicolors
-set inccommand=nosplit
+set belloff=
 
 set foldopen-=block
 set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,eol:¶
@@ -83,10 +83,9 @@ Plug 'AndrewRadev/writable_search.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'bruno-/vim-vertical-move'
 Plug 'coderifous/textobj-word-column.vim'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'idbrii/vim-mark'
 Plug 'jeetsukumaran/vim-indentwise'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'mbbill/undotree'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'tommcdo/vim-exchange'
@@ -107,6 +106,15 @@ Plug 'sjl/splice.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'sts10/vim-mustard'
 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+" https://github.com/junegunn/fzf.vim/issues/47#issuecomment-160237795
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+command! ProjectFiles execute 'Files' s:find_git_root()
+nnoremap <c-p> :ProjectFiles<cr>
+
 Plug 'tommcdo/vim-lion'
 let b:lion_squeeze_spaces = 1
 
@@ -125,7 +133,16 @@ Plug 'bronson/vim-visual-star-search' " must be after vim-mark because of mappin
 " local plugins
 " TODO: use local versions again?
 " vimplug doesn't have repository history
+
+" Plug 'wellle/targets.vim'
 Plug '~/code/targets.vim'
+" Plug 'wellle/targets.vim', {'on' : []}
+" Plug '~/code/targets.vim', {'on' : []}
+" augroup LoadDuringHold_Targets
+"     autocmd!
+"     autocmd CursorHold,CursorHoldI * call plug#load('targets.vim') | autocmd! LoadDuringHold_Targets
+" augroup end
+
 let g:targets_quotes = '"q '' `'
 " let g:targets_nlNL = 'nN  '
 " let g:targets_addJumplist = 1
