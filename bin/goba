@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare paths=$(for t in $(find . -name "*_test.go" -not -path "./.go/*"); do dirname $t; done | sort | uniq)
+declare paths=$(for t in $(find . -name "*_test.go" -not -path "./.go/*" -not -path "./vendor/*"); do dirname $t; done | sort | uniq)
 declare -i return_value=0
 
 for path in ${paths[@]}; do

@@ -133,12 +133,12 @@ alias gotf='go test -gocheck.f'
 alias gotb='go test -gocheck.b'
 
 alias ag='ag --ignore "*.log" --ignore vendor'
-alias agi='ag --ignore "*_test.go"'
+alias agi='ag --ignore "*_test.go" --ignore "*_easyjson*"'
 alias agc='ag -c'
 alias agic='agi -c'
 
 function vimag  { vim -c "Ag --ignore "*.log" --ignore vendor '$*'" }
-function vimagi { vim -c "Ag --ignore "*.log" --ignore vendor --ignore '*_test.go' '$*'" }
+function vimagi { vim -c "Ag --ignore "*.log" --ignore vendor --ignore '*_test.go' --ignore '*_easyjson*' '$*'" }
 alias vimagc='vimag'
 alias vimagic='vimagi'
 
