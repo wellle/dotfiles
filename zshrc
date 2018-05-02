@@ -2,10 +2,12 @@
 
 # TODO: split in separate files like https://github.com/ivyl/zsh-config
 
+# this seems to be slow when opening a new terminal/split
 autoload -U compinit
 compinit
 
 export CORRECT_IGNORE='_*'
+# export TERM=xterm
 
 if [ -e ~/.zsh/zsh-syntax-highlighting ]; then
     source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -118,11 +120,6 @@ alias muxconfig='vim ~/Dropbox/tmux.start'
 
 alias bing='afplay /System/Library/Sounds/Ping.aiff -v 2'
 
-# alias protoc='~/protoc-3/bin/protoc'
-
-# https://github.com/tmux/tmux/issues/108#issuecomment-145654960
-alias bug="sudo kill $(ps aux | grep '[n]otifyd' | awk '{print $2}')"
-
 source ~/dotfiles/aliasgit.zsh
 
 # go aliases
@@ -139,8 +136,8 @@ alias agi='ag --ignore "*_test.go"'
 alias agc='ag -c'
 alias agic='agi -c'
 
-function vimag  { vim -c "Ag --ignore "*.log" --ignore vendor '$*'" }
-function vimagi { vim -c "Ag --ignore "*.log" --ignore vendor --ignore '*_test.go' '$*'" }
+function vimag  { vim -c "Ag --ignore '*.log' --ignore vendor '$*'" }
+function vimagi { vim -c "Ag --ignore '*.log' --ignore vendor --ignore '*_test.go' '$*'" }
 alias vimagc='vimag'
 alias vimagic='vimagi'
 
@@ -191,16 +188,17 @@ if [ -e /usr/local/etc/profile.d/z.sh ]; then
     . /usr/local/etc/profile.d/z.sh
 fi
 
-# https://github.com/supercrabtree/k
-if [ -e ~/code/k/k.sh ]; then
-    source ~/code/k/k.sh
-fi
+# # https://github.com/supercrabtree/k
+# if [ -e ~/code/k/k.sh ]; then
+#     source ~/code/k/k.sh
+# fi
 
-source ~/dotfiles/fzf.zsh
+# source ~/dotfiles/fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# disable software control flow <C-S> and <C-Q>
-stty -ixon
-stty -ixoff
+# # disable software control flow <C-S> and <C-Q>
+# stty -ixon
+# stty -ixoff
 
 echo $(date) >> ~/.zsh/dates
 
@@ -215,7 +213,6 @@ echo $(date) >> ~/.zsh/dates
 # http://chneukirchen.org/blog/archive/2012/02/10-new-zsh-tricks-you-may-not-know.html
 # bindkey "^R" history-incremental-pattern-search-backward
 # bindkey "^S" history-incremental-pattern-search-forward
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # TODO: extact fzf functions again
 # fshow - git commit browser (enter for show, ctrl-d for diff, ` toggles sort)
@@ -240,8 +237,6 @@ fshow() {
   done
 }
 
-test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
-
-# source ~/.gem/gems/tmuxinator-0.6.11/completion/tmuxinator.zsh
+# # source ~/.gem/gems/tmuxinator-0.6.11/completion/tmuxinator.zsh
 
 ulimit -n 512
